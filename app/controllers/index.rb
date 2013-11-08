@@ -37,14 +37,18 @@ end
 # ===== POST====================================
 
 post '/upload_photo' do
-  @album = Album.find(params[:id])
-  @photo = Photo.new(filename: params[:filename])
+
+  # @photo = Photo.create(album_id: params[:id], file: params[:filename])
+
+  # @album = Album.find(params[:id])
+  # @photo = Photo.new(filename: params[:filename])
   @photo = File.open(APP_ROOT + '/public/images' + "/uploads/params[:filename]", "w" ) do |f|
     f.write(params[:filename].read)
   end
   redirect to "/uploads/#{@album.id}"
 end
 
+#    WAT ?
 post '/albums/:album_id' do
     photo = current_user.albums.find(params[:album_id]).photos.new()
     photo.file = params[:image]

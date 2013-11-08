@@ -2,9 +2,10 @@
   <h3> Add your content here! </h3>
   <% @user.albums.each do |album| %>
     <%= album.name %>
-    <form action="/upload" enctype="multipart/form-data">
-        <input type="file" name="filename">
-        <input type="submit" name="submit!" value="Upload!">
+
+    <form action="/upload_photo" enctype="multipart/form-data" method="post">
+      <input type="file" name="filename">
+      <input type="submit" name="submit!" value="Upload!">
     </form>
   <% end %>
 
